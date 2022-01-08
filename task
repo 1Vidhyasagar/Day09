@@ -1,0 +1,97 @@
+
+a.>  Get all the countries from Asia continent /region using Filter function
+
+CODE:
+
+var xhr1 = new XMLHttpRequest();
+
+xhr1.open("GET", "https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json");
+
+xhr1.onload = function () {
+  if (xhr1.status >= 200 && xhr1.status < 300) {
+    let data1 = JSON.parse(this.response);
+    var totalPopulation = data1.filter((data)=>{
+        if(data.region == "Asia") {
+            console.log(data.name);
+        }
+    } );
+  }
+};
+xhr1.send();
+
+
+b.>  Get all the countries with a population of less than 2 lakhs using Filter function
+CODE:
+
+var xhr1 = new XMLHttpRequest();
+
+xhr1.open("GET", "https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json");
+
+xhr1.onload = function () {
+  if (xhr1.status >= 200 && xhr1.status < 300) {
+    let data1 = JSON.parse(this.response);
+    var totalPopulation = data1.filter((data)=>{
+        if(data.population < 200000) {
+            console.log(data.name);
+        }
+    } );
+  }
+};
+xhr1.send();
+
+
+c)
+var xhr1 = new XMLHttpRequest();
+
+xhr1.open("GET", "https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json");
+
+xhr1.onload = function () {
+  if (xhr1.status >= 200 && xhr1.status < 300) {
+    let data1 = JSON.parse(this.response);
+    var arr1 = [];
+    data1.forEach(function (data){
+        console.log(
+            `
+            ${data.name}
+            ${data.capital}
+            ${data.flag}
+            `
+        )
+    })
+  }
+};
+xhr1.send();
+
+d)
+var xhr1 = new XMLHttpRequest();
+
+xhr1.open("GET", "https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json");
+
+xhr1.onload = function () {
+  if (xhr1.status >= 200 && xhr1.status < 300) {
+    let data1 = JSON.parse(this.response);
+    var totalPopulation = data1.reduce((acc,curr)=> acc+curr.population,0);
+    console.log(totalPopulation);
+  }
+};
+xhr1.send();
+
+e.>  Print the country which uses US Dollars as currency.
+
+CODE:
+
+var xhr1 = new XMLHttpRequest();
+
+xhr1.open("GET", "https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json");
+
+xhr1.onload = function () {
+  if (xhr1.status >= 200 && xhr1.status < 300) {
+    let data1 = JSON.parse(this.response);
+    var totalPopulation = data1.filter((data)=>{
+        if(data.currencies[0].symbol == "$") {
+            console.log(data.name);
+        }
+    } );
+  }
+};
+xhr1.send();
